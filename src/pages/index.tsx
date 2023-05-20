@@ -5,6 +5,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 
 import { api } from "~/utils/api";
 import { Navbar } from "~/components/Navbar";
+import { PrimaryButton, TersierButton } from "~/components/Button";
 
 const Home: NextPage = () => {
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
@@ -23,6 +24,8 @@ const Home: NextPage = () => {
           <main className="flex-1">
             <header>
               <h1>FiReddit</h1>
+              <PrimaryButton>Hello World</PrimaryButton>
+              <TersierButton>Hello From tersier Button</TersierButton>
             </header>
           </main>
           <aside className="">right sidebar</aside>
