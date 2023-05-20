@@ -12,6 +12,7 @@ import {
   FaArrowUp,
   FaComment,
 } from "react-icons/fa";
+import { Card } from "~/components/Card";
 
 const Home: NextPage = () => {
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
@@ -26,30 +27,10 @@ const Home: NextPage = () => {
       <div className="flex min-h-screen flex-col">
         <Navbar />
         <div className="flex flex-1 flex-col  sm:flex-row">
-          <aside className="order-first w-52 ">2</aside>
-          <main className="flex flex-1 flex-col items-center justify-center">
-            <div className="flex gap-3 rounded-md border  shadow-sm">
-              <div className="flex  h-full flex-col items-center gap-7 bg-gray-200 p-2 text-xl text-gray-600">
-                <FaArrowUp />
-                <div>0</div>
-                <FaArrowDown />
-              </div>
-              <div className="flex flex-1 flex-col gap-3 p-3">
-                <header>
-                  <h1>Hello World From Post 1</h1>
-                </header>
-
-                <div className="flex flex-col gap-3">
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Excepturi, nobis minima? Animi maiores sunt deleniti
-                    praesentium iusto, consequatur nam aspernatur.
-                  </p>
-                  <div>
-                    <FaComment className="text-xl" />
-                  </div>
-                </div>
-              </div>
+          <aside className="order-first w-32 md:w-52"></aside>
+          <main className="flex flex-1 flex-col p-2 md:mt-5">
+            <div className=" flex flex-col gap-1 ">
+              <Card /> <Card />{" "}
             </div>
           </main>
           <aside className="">right sidebar</aside>
