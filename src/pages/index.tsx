@@ -6,6 +6,12 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import { api } from "~/utils/api";
 import { Navbar } from "~/components/Navbar";
 import { PrimaryButton, TersierButton } from "~/components/Button";
+import {
+  FaArrowAltCircleUp,
+  FaArrowDown,
+  FaArrowUp,
+  FaComment,
+} from "react-icons/fa";
 
 const Home: NextPage = () => {
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
@@ -21,12 +27,30 @@ const Home: NextPage = () => {
         <Navbar />
         <div className="flex flex-1 flex-col  sm:flex-row">
           <aside className="order-first w-52 ">2</aside>
-          <main className="flex-1">
-            <header>
-              <h1>FiReddit</h1>
-              <PrimaryButton>Hello World</PrimaryButton>
-              <TersierButton>Hello From tersier Button</TersierButton>
-            </header>
+          <main className="flex flex-1 flex-col items-center justify-center">
+            <div className="flex gap-3 rounded-md border  shadow-sm">
+              <div className="flex  h-full flex-col items-center gap-7 bg-gray-200 p-2 text-xl text-gray-600">
+                <FaArrowUp />
+                <div>0</div>
+                <FaArrowDown />
+              </div>
+              <div className="flex flex-1 flex-col gap-3 p-3">
+                <header>
+                  <h1>Hello World From Post 1</h1>
+                </header>
+
+                <div className="flex flex-col gap-3">
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Excepturi, nobis minima? Animi maiores sunt deleniti
+                    praesentium iusto, consequatur nam aspernatur.
+                  </p>
+                  <div>
+                    <FaComment className="text-xl" />
+                  </div>
+                </div>
+              </div>
+            </div>
           </main>
           <aside className="">right sidebar</aside>
         </div>
