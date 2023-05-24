@@ -1,5 +1,11 @@
 import { FC } from "react";
-import { FaArrowDown, FaArrowUp, FaComment } from "react-icons/fa";
+import {
+  FaArrowDown,
+  FaArrowUp,
+  FaBookmark,
+  FaComment,
+  FaUser,
+} from "react-icons/fa";
 import { PrimaryButton, TersierButton } from "./Button";
 
 export type PostCard = {
@@ -27,7 +33,7 @@ export const PostCard: FC<PostCard> = ({
 }) => {
   return (
     <>
-      <div className="flex  gap-1 rounded-md border bg-white shadow">
+      <div className="flex  cursor-pointer gap-1 rounded-md border bg-white shadow">
         <div className="flex   flex-col items-center justify-center gap-5 bg-gray-200 p-2 text-xl text-gray-600">
           <FaArrowUp />
           <div>{likeCount}</div>
@@ -36,20 +42,22 @@ export const PostCard: FC<PostCard> = ({
         <div className="flex flex-1 flex-col gap-2 p-4 md:p-3">
           <header>
             <h1>{title}</h1>
-            <div>
-              <h2>{username}</h2>
-            </div>
           </header>
 
           <div className="flex flex-col gap-2">
             <p>{postBody}</p>
-            <div className="flex gap-2">
+            <div className="flex place-items-center gap-3">
               <FaComment className="text-xl" />
-              <p>{commentCount}</p>
+              <p>{commentCount} Comments</p>
+
+              <FaBookmark />
+              <p>Save</p>
             </div>
-            <div>
-              <TersierButton>Show more</TersierButton>
-            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <FaUser className="h-8 w-8 rounded-full border p-1 shadow" />
+            <p className="text-blue-400">{username}</p>
+            <p className="text-yellow-400">{postDate}</p>
           </div>
         </div>
       </div>
