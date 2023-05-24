@@ -1,5 +1,11 @@
 import { signIn } from "next-auth/react";
-import { FaHamburger, FaBars } from "react-icons/fa";
+import {
+  FaHamburger,
+  FaBars,
+  RxAvatar,
+  FaUser,
+  FaSearch,
+} from "react-icons/fa";
 type Navbar = {
   title: string;
 };
@@ -13,12 +19,16 @@ export const Navbar = () => {
       <nav>
         <ul className="hidden items-center  justify-around gap-8 md:flex">
           <li>
-            <a href="#">About</a>
+            <div className="flex items-center rounded-full border bg-white p-2 px-4 text-gray-500 shadow">
+              <input
+                className="w-full rounded-lg focus:outline-none "
+                type="text"
+              />
+              <FaSearch />
+            </div>
           </li>
-          <li>
-            <a onClick={() => signIn()} href="#">
-              SignUp
-            </a>
+          <li className="flex h-8 w-8 items-center rounded-full shadow-md ">
+            <FaUser className="mx-auto block  text-gray-500" />
           </li>
         </ul>
         <button className="block md:hidden">
