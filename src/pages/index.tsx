@@ -24,7 +24,6 @@ async function fetchPosts() {
 
 const Home = () => {
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
-  const user = api.example.helloWorld.useQuery();
   const { data } = useSession();
 
   return (
@@ -37,35 +36,36 @@ const Home = () => {
       {/* Header for Filtering Posts and creating posts */}
       <div className="flex min-h-screen flex-col">
         <Navbar />
-
         <div className="flex flex-1 flex-col  sm:flex-row">
-          <aside className="order-first w-full md:mt-20 md:w-52">
-            <div className="flex flex-row items-center  justify-center gap-5 md:flex-col">
-              <div className="md:w-full">
-                <PrimaryButton>
-                  <FaPlus />
-                  <span>Add Post</span>
-                </PrimaryButton>
-              </div>
-              <div>
-                <select
-                  name="post-filter"
-                  className="rounded-md border border-primary bg-gray-200 p-2 px-3"
-                  id="post-filter"
-                >
-                  <option value="Latest">Latest</option>
-                  <option value="Most Commented">Most Commented</option>
-                  <option value="Most Liked">Most Liked</option>
-                </select>
+          <aside className="w-52 border p-3 "></aside>
+          <main className="flex w-full flex-1 flex-col p-2 px-7 md:mt-5">
+            <div className="">
+              <div className="flex flex-row items-center  justify-center  gap-3">
+                <div className="">
+                  <PrimaryButton>
+                    <FaPlus />
+                    <span>Add Post</span>
+                  </PrimaryButton>
+                </div>
+                <div>
+                  <select
+                    name="post-filter"
+                    className="rounded-md border bg-primary p-2 text-gray-50 shadow-md  "
+                    id="post-filter"
+                  >
+                    <option value="Latest">Latest</option>
+                    <option value="Most Commented">Most Commented</option>
+                    <option value="Most Liked">Most Liked</option>
+                  </select>
+                </div>
               </div>
             </div>
-          </aside>
-          <main className="flex flex-1 flex-col p-2 md:mt-5">
-            <div className=" flex flex-col gap-1 ">
+
+            <div className=" flex w-full flex-col  gap-1">
               <PostCard
                 postDate="20-20-2023"
                 updatedAt="20-20-2023"
-                username={data?.user.name}
+                username={"ZZZ"}
                 userId="3f"
                 tags={["javascript", "learning"]}
                 commentCount={2}
@@ -75,7 +75,6 @@ const Home = () => {
               />
             </div>
           </main>
-          <aside className="">right sidebar</aside>
         </div>
         <footer>
           <header>
