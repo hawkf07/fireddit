@@ -1,3 +1,4 @@
+import { signIn } from "next-auth/react";
 import { FaHamburger, FaBars } from "react-icons/fa";
 type Navbar = {
   title: string;
@@ -15,7 +16,9 @@ export const Navbar = () => {
             <a href="#">About</a>
           </li>
           <li>
-            <a href="#">SignUp</a>
+            <a onClick={() => signIn()} href="#">
+              SignUp
+            </a>
           </li>
         </ul>
         <button className="block md:hidden">

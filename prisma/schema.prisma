@@ -2,7 +2,7 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-    provider = "prisma-client-js"
+    provider        = "prisma-client-js"
     previewFeatures = ["jsonProtocol"]
 }
 
@@ -49,13 +49,19 @@ model Session {
 }
 
 model User {
-    id            String    @id @default(cuid())
+    id            String     @id @default(cuid())
     name          String?
-    email         String?   @unique
+    email         String?    @unique
     emailVerified DateTime?
     image         String?
     accounts      Account[]
     sessions      Session[]
+    Subreddit     Subreddit? @relation(fields: [subredditId], references: [id])
+    subredditId   String?
+    Post          Post?      @relation(fields: [postId], references: [id])
+    postId        String?
+    Comment       Comment?   @relation(fields: [commentId], references: [id])
+    commentId     String?
 }
 
 model VerificationToken {
@@ -64,4 +70,36 @@ model VerificationToken {
     expires    DateTime
 
     @@unique([identifier, token])
+}
+
+model Subreddit {
+    id          String   @id @default(cuid())
+    name        String   @unique
+    description String
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+    posts       Post[]
+    users       User[]
+}
+
+model Post {
+    id          String    @id @default(cuid())
+    title       String
+    body        String
+    createdAt   DateTime  @default(now())
+    updatedAt   DateTime  @updatedAt
+    subreddit   Subreddit @relation(fields: [subredditId], references: [id], onDelete: Cascade)
+    subredditId String
+    users       User[]
+    comments    Comment[]
+}
+
+model Comment {
+    id        String   @id @default(cuid())
+    body      String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    postId    String
+    post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+    users     User[]
 }

@@ -22,4 +22,7 @@ export const exampleRouter = createTRPCRouter({
   getSecretMessage: protectedProcedure.query(() => {
     return "you can now see this secret message!";
   }),
+  helloWorld: publicProcedure.query(({ ctx }) => {
+    return ctx.prisma.user.findFirst();
+  }),
 });
