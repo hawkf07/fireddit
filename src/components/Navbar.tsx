@@ -5,7 +5,10 @@ import {
   RxAvatar,
   FaUser,
   FaSearch,
+  FaPlus,
+  FaPlusCircle,
 } from "react-icons/fa";
+import { PrimaryButton, TersierButton } from "./Button";
 type Navbar = {
   title: string;
 };
@@ -21,15 +24,22 @@ export const Navbar = () => {
           <li>
             <div className="flex items-center rounded-full border bg-white p-2 px-4 text-gray-500 shadow">
               <input
-                className="w-full rounded-lg focus:outline-none "
+                className="w-full rounded-lg text-gray-500 focus:text-gray-700 focus:outline-none "
                 type="text"
+                placeholder="search posts"
               />
               <FaSearch />
             </div>
           </li>
-          <li className="flex h-8 w-8 items-center rounded-full shadow-md ">
-            <FaUser className="mx-auto block  text-gray-500" />
-          </li>
+          <div className="flex cursor-pointer items-center gap-3 text-lg">
+            <TersierButton>
+              <FaPlusCircle />
+              <p className="text-sm">Add post</p>
+            </TersierButton>
+            <li className="flex h-8 w-8 items-center rounded-full shadow-md ">
+              <FaUser className="mx-auto block  text-gray-500" />
+            </li>
+          </div>
         </ul>
         <button className="block md:hidden">
           <FaBars />

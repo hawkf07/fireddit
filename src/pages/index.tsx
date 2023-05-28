@@ -15,13 +15,6 @@ import {
 } from "react-icons/fa";
 import { PostCard } from "~/components/Card";
 import { useEffect } from "react";
-
-async function fetchPosts() {
-  const response = await fetch("https://dummyjson.com/posts");
-  const data = await response.json();
-  return data;
-}
-
 const Home = () => {
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
   const { data } = useSession();
@@ -39,28 +32,6 @@ const Home = () => {
         <div className="flex flex-1 flex-col  sm:flex-row">
           <aside className="w-52 border p-3 "></aside>
           <main className="flex w-full flex-1 flex-col p-2 px-7 md:mt-5">
-            <div className="">
-              <div className="flex flex-row items-center  justify-center  gap-3">
-                <div className="">
-                  <PrimaryButton>
-                    <FaPlus />
-                    <span>Add Post</span>
-                  </PrimaryButton>
-                </div>
-                <div>
-                  <select
-                    name="post-filter"
-                    className="rounded-md border bg-primary p-2 text-gray-50 shadow-md  "
-                    id="post-filter"
-                  >
-                    <option value="Latest">Latest</option>
-                    <option value="Most Commented">Most Commented</option>
-                    <option value="Most Liked">Most Liked</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-
             <div className=" flex w-full flex-col  gap-1">
               <PostCard
                 postDate="20-20-2023"
@@ -76,11 +47,6 @@ const Home = () => {
             </div>
           </main>
         </div>
-        <footer>
-          <header>
-            <h1>View This Project on github</h1>
-          </header>
-        </footer>
       </div>
     </>
   );

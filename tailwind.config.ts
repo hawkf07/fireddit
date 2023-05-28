@@ -6,7 +6,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: colors.gray[400],
+        primary: colors.blue[400],
+        danger: colors.red[500],
+        warning: colors.yellow[500],
+        success: colors.green[500],
       },
     },
   },
